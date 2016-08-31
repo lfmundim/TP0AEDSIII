@@ -9,17 +9,14 @@
 
 typedef struct trieT{
     char key;
-    struct trieT *next;
-    struct trieT *prev;
-    struct trieT *children;
-    struct trieT *parent;
-    int end, height, count; //1 true 0 false; altura = posiçao +1
+    struct trieT* children[26];
+    int end, count; //1 true 0 false
 }trieT;
 
 void makeTrie(trieT **root);
 int trieSearch(trieT *root, char key, char op); //letra por letra
-trieT *trieMakeNode(char key, int position, int last);
-void insertNode(trieT **root, char key, int position, int last); //letra por letra (key)
+trieT *trieMakeNode(char key, int end);
+void insertNode(trieT **root, char key, int end); //letra por letra (key)
 void removeNode(trieT **root, char *key);
 void killTrie(trieT *root);
 void trieMatch(trieT *root, char *key, char op); //retorna true ou false no match da palavra
